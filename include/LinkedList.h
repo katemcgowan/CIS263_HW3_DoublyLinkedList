@@ -11,7 +11,7 @@
 
 //typedef struct Node; 
 
-//template <typename Object>
+template <typename Object>
 typedef struct Node_ {
 	Node_ * previous;
 	Node_ * next;
