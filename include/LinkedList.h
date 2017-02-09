@@ -15,6 +15,16 @@ struct Node{
 	Node * previous;
 	Node * next;
 	T * data;
+	
+	//might work, might be terrible
+	//recursivly calls down next until the end of the list is reached
+	//then deletes all the way up
+	void clearList() {
+		if(next.next != nullptr)
+			next.clearList();
+		delete next;
+		delete data;
+	}
 };
 
 template <typename T>
@@ -26,8 +36,12 @@ class LinkedList {
 			top = nullptr;
 			tail = nullptr;
 		}
+		
 		int size(){
 			return size;
+		
+		void clear() {
+			top.clearList();
 		}
 	
 	private:
