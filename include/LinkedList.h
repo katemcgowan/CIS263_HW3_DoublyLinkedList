@@ -7,16 +7,34 @@
  * @authors Jamie Penzien, Natalie Rodriguez,
  * Kate McGowan, and Nathan Pipe.
  */
+ 
+ 
 
+template <typename T> 
+struct Node{
+	Node * previous;
+	Node * next;
+	T * data;
+};
 
-//typedef struct Node; 
+template <typename T>
+class LinkedList {
+	
+	public:
+		LinkedList() {
+			size = 0;
+			top = nullptr;
+			tail = nullptr;
+		}
+	
+	private:
+		int size;
+		struct Node<T> * top;
+		struct Node<T> * tail;
+		
+	
+};
 
-template <typename Object>
-typedef struct Node_ {
-	Node_ * previous;
-	Node_ * next;
-	Object * data;
-} Node;
 
 //making a linked list- head & tail will be nullptr
 //LATER store the size of the list
