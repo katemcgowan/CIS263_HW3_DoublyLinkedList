@@ -39,13 +39,47 @@ class LinkedList {
 		
 		int size(){
 			return size;
+		}
 		
 		void clear() {
 			top.clearList();
 		}
+
+		struct Node<T> get(int position) {
+			struct Node<T> * pointer = *top;
+			if (position < (size()/2)) {
+				for(int i = 0; i <= position; i++) {
+					pointer = pointer.next;
+				}
+
+			} else {
+				pointer = *tail;
+					for(int i = size(); i >= position; i--) {
+					pointer = pointer.next;
+				}
+
+			}
+		return pointer;
+		}
 	
+		void remove(int position) {
+			struct Node<T> * pointer = *top;
+			if (position < (size()/2)) {
+				for(int i = 0; i <= position; i++) {
+					pointer = pointer.next;
+				}
+
+			} else {
+				pointer = *tail;
+					for(int i = size(); i >= position; i--) {
+					pointer = pointer.next;
+				}
+
+			}
+		delete pointer;
+		}
 	private:
-		int size;
+		int Size;
 		struct Node<T> * top;
 		struct Node<T> * tail;
 		
