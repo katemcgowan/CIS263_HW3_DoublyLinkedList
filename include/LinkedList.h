@@ -26,6 +26,9 @@ class LinkedList {
 			top = nullptr;
 			tail = nullptr;
 		}
+		int size(){
+			return size;
+		}
 	
 	private:
 		int size;
