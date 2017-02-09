@@ -8,14 +8,14 @@
  * Kate McGowan, and Nathan Pipe.
  */
 
-//#include <object>
 
-typedef struct Node; 
+//typedef struct Node; 
 
-struct Node_{
-	Node * previous;
-	Node * next;
-	// data;
+//template <typename Object>
+typedef struct Node_ {
+	Node_ * previous;
+	Node_ * next;
+	Object * data;
 } Node;
 
 //making a linked list- head & tail will be nullptr
