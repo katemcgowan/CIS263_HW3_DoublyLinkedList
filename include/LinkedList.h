@@ -16,6 +16,12 @@ struct Node{
 	Node * next;
 	T * data;
 	
+	Node(Node & p , Node & n, T & d) {
+		previous = p;
+		next = n;
+		data = d;
+	}
+	
 	//might work, might be terrible
 	//recursivly calls down next until the end of the list is reached
 	//then deletes all the way up
@@ -37,15 +43,30 @@ class LinkedList {
 			tail = nullptr;
 		}
 		
-		int size(){
-			return size;
+		// adds to end of list
+		void add(T & data) {
+			if(top == nullptr) {
+				top = new struct Node<T>(nullptr, nullptr, data);
+			}
+			
+			//TODO
+			
+		}
+	
+		void add(int index, T data) {
+			
+		}
+		
+		int size() {
+			return Size;
+		}
 		
 		void clear() {
 			top.clearList();
 		}
 	
 	private:
-		int size;
+		int Size;
 		struct Node<T> * top;
 		struct Node<T> * tail;
 		
