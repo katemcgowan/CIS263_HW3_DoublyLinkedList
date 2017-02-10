@@ -47,13 +47,16 @@ class LinkedList {
 		void add(T & data) {
 			if(top == nullptr) {
 				top = new struct Node<T>(nullptr, nullptr, data);
+				tail = top;
 			}
-			
-			//TODO
+			//
+			tail.next = new struct Node<T>(/*not so sure about this*/&tail, nullptr, data);
+			tail = tail.next;
 			
 		}
 	
-		void add(int index, T data) {
+		//add at position
+		void insert(int index, T data) {
 			
 		}
 		
@@ -61,10 +64,11 @@ class LinkedList {
 			return size;
 		}
 		
+		//removes all elements from the list
 		void clear() {
 			top.clearList();
 		}
-
+		
 		struct Node<T> get(int position) {
 			struct Node<T> * pointer = *top;
 			if (position < (size()/2)) {
