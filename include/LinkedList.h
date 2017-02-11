@@ -1,4 +1,4 @@
-/*
+ /*
  * CIS 263-02 Winter 2017
  *
  * This file will contain the struct Node
@@ -52,12 +52,31 @@ class LinkedList {
 			//
 			tail.next = new struct Node<T>(/*not so sure about this*/&tail, nullptr, data);
 			tail = tail.next;
+			size++;
 			
+		}
+		
+		// adds to beginning of list????
+		void addFirst(T & data) {
+			if(tail == nullptr) {
+				tail = new struct Node<T>(nullptr, nullptr, data);
+				top = tail;
+			}
+			top.next = new struct Node<T>(nullptr, &top, data);
+			top = top.next;
+			size++;
 		}
 	
 		//add at position
 		void insert(int index, T data) {
-			
+			if(index == 0)
+				addFirst(data);
+			else if(index == size())
+				add(data);
+			else {
+			//stuff
+			}
+
 		}
 		
 		int size() {
