@@ -62,8 +62,8 @@ class LinkedList {
 				tail = new struct Node<T>(nullptr, nullptr, data);
 				top = tail;
 			}
-			top.next = new struct Node<T>(nullptr, &top, data);
-			top = top.next;
+			top.previous = new struct Node<T>(nullptr, &top, data);
+			top = top.previous;
 			size++;
 		}
 	
