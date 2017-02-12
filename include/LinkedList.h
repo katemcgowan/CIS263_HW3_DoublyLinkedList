@@ -75,6 +75,7 @@ class LinkedList {
 				add(data);
 			else {
 			//stuff
+			Size++;
 			}
 
 		}
@@ -86,6 +87,7 @@ class LinkedList {
 		//removes all elements from the list
 		void clear() {
 			top->clearList();
+			Size = 0;
 		}
 		
 		struct Node<T> * get(int position) {
@@ -120,6 +122,7 @@ class LinkedList {
 
 			}
 		delete pointer;
+		Size--;
 		}
 		
 	private:
