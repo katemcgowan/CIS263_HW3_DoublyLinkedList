@@ -16,18 +16,18 @@ struct Node{
 	Node * next;
 	T * data;
 	
-	Node(Node & p , Node & n, T & d) {
+	Node(Node * p , Node * n, T & d) {
 		previous = p;
 		next = n;
-		data = d;
+		data = &d;
 	}
 	
 	//might work, might be terrible
 	//recursivly calls down next until the end of the list is reached
 	//then deletes all the way up
 	void clearList() {
-		if(next.next != nullptr)
-			next.clearList();
+		if(next->next != nullptr)
+			next->clearList();
 		delete next;
 		delete data;
 	}
@@ -38,21 +38,21 @@ class LinkedList {
 	
 	public:
 		LinkedList() {
-			size = 0;
+			Size = 0;
 			top = nullptr;
 			tail = nullptr;
 		}
 		
 		// adds to end of list
-		void add(T & data) {
+		void add( T && data) {
 			if(top == nullptr) {
 				top = new struct Node<T>(nullptr, nullptr, data);
 				tail = top;
 			}
-			//
-			tail.next = new struct Node<T>(/*not so sure about this*/&tail, nullptr, data);
-			tail = tail.next;
-			size++;
+			else {
+				tail = new struct Node<T>(tail, nullptr, data);
+			}
+			Size++;
 			
 		}
 		
@@ -62,9 +62,9 @@ class LinkedList {
 				tail = new struct Node<T>(nullptr, nullptr, data);
 				top = tail;
 			}
-			top.previous = new struct Node<T>(nullptr, &top, data);
-			top = top.previous;
-			size++;
+			top->previous = new struct Node<T>(nullptr, &top, data);
+			top = top->previous;
+			Size++;
 		}
 	
 		//add at position
@@ -80,25 +80,25 @@ class LinkedList {
 		}
 		
 		int size() {
-			return size;
+			return Size;
 		}
 		
 		//removes all elements from the list
 		void clear() {
-			top.clearList();
+			top->clearList();
 		}
 		
-		struct Node<T> get(int position) {
-			struct Node<T> * pointer = *top;
+		struct Node<T> * get(int position) {
+			struct Node<T> * pointer = top;
 			if (position < (size()/2)) {
 				for(int i = 0; i <= position; i++) {
-					pointer = pointer.next;
+					pointer = pointer->next;
 				}
 
 			} else {
-				pointer = *tail;
+				pointer = tail;
 					for(int i = size(); i >= position; i--) {
-					pointer = pointer.next;
+					pointer = pointer->next;
 				}
 
 			}
@@ -109,18 +109,19 @@ class LinkedList {
 			struct Node<T> * pointer = *top;
 			if (position < (size()/2)) {
 				for(int i = 0; i <= position; i++) {
-					pointer = pointer.next;
+					pointer = pointer->next;
 				}
 
 			} else {
 				pointer = *tail;
 					for(int i = size(); i >= position; i--) {
-					pointer = pointer.next;
+					pointer = pointer->next;
 				}
 
 			}
 		delete pointer;
 		}
+		
 	private:
 		int Size;
 		struct Node<T> * top;
@@ -128,9 +129,5 @@ class LinkedList {
 		
 	
 };
-
-
-//making a linked list- head & tail will be nullptr
-//LATER store the size of the list
 
 
